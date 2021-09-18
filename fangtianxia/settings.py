@@ -20,7 +20,7 @@ NEWSPIDER_MODULE = 'fangtianxia.spiders'
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+CONCURRENT_REQUESTS = 4
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
@@ -99,5 +99,5 @@ IMAGES_STORE = './images'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-# LOG_FILE = "mySpider.log"
-# LOG_LEVEL = "INFO"  # DEBUG<INFO<WARNING<ERROR<CRITICAL
+LOG_FILE = "mySpider.log"
+LOG_LEVEL = "INFO"  # DEBUG<INFO<WARNING<ERROR<CRITICAL
