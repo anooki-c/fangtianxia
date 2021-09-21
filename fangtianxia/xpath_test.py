@@ -3801,8 +3801,72 @@ function loadScript(B,D){var A=document.createElement("script"),C=document.docum
 '''
 body = '<ul class="list clearfix"><li><div class="list-left">物业类别：</div><div class="list-right" title="普通住宅,商住公寓,LOFT">普通住宅,商住公寓,LOFT</div></li></ul>'
 
-aaa = Selector(text=content).xpath('//div[contains(.,"基本信息")]/parent/text()').getall()
-aa = Selector(text=content).xpath('(//ul[@class="list clearfix"])[1]/li[5]')
-a = Selector(text=content).css('div.main-left ul.list.clearfix:nth-child(1) li:nth-child(4)::text').get()
+# content = '''
+# <ul class="list clearfix">
+#                         <li>
+#                             <div class="list-left">物业类别：</div>
+#                             <div class="list-right" title="普通住宅,商住公寓,LOFT">普通住宅,商住公寓,LOFT</div>
+#                         </li>
+#                         <li>
+#                         <div class="list-left">项目特色：</div>
+#                         <div class="list-right" style="height:32px;">
+#
+#
+#                                     <span class="tag">品牌地产</span>
+#
+#                                     <span class="tag">地铁沿线</span>
+#
+#
+#                         </li>
+#                         <li>
+#                             <div class="list-left">建筑类别：</div>
+#                             <div class="list-right">
+#                                 <span class="bulid-type">板楼</span>
+#                             </div>
+#                         </li>
+#                         <li>
+#                             <div class="list-left">装修状况：</div>
+#                             <div class="list-right">
+#
+#                                     毛坯
+#
+#                             </div>
+#                         </li>
+#                         <li>
+#                             <div class="list-left">产权年限：</div>
+#                             <div class='list-right'>
+#                                 <div class='clearfix cqnx_512'>
+#
+#
+#                                         <p style="width: 150px;float: left;">普通住宅:70年</p>
+#
+#                                         <p style="width: 150px;float: left;">商住公寓:40年</p>
+#
+#                                         <p style="width: 150px;float: left;">LOFT:40年</p>
+#
+#
+#                                 </div>
+#                             </div>
+#                         </li>
+#
+#                         <li>
+#                             <div class="list-left">环线位置：</div>
+#                             <div class="list-right">二至三环</div>
+#                         </li>
+#
+#                         <li class="list-text">
+#                             <div class="list-left">开<i style="margin-right: 6px;"></i>发<i style="margin-right: 6px;"></i> 商：</div>
+#                             <div class="list-right-text"><a href="https://baike.fang.com/item/武汉华侨城实业发展有限公司/1216199" target="_blank">武汉华侨城实业发展有限公司</a></div>
+#                         </li>
+#                         <li class="list-text">
+#                             <div class="list-left">楼盘地址：</div>
+#                             <div class="list-right-text">团结大道地铁4号线工业四路站B出口</div>
+#                         </li>
+#                     </ul>
+#                 </div>'''
 
-print(aa)
+aaa = Selector(text=content).xpath('//div[contains(.,"基本信息")]/parent/text()').getall()
+aa = Selector(text=content).xpath('(//ul[@class="clearfix list"])/li[11]/div[2]/text()').get()
+a = Selector(text=content).css('div.main-item ul.list.clearfix li:nth-child(6) div:nth-child(2)::text').get().strip()
+next_url = Selector(text=content).xpath('//a[@class="next"]/@href').get()
+print(next_url)

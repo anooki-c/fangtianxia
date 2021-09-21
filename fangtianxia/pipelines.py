@@ -49,15 +49,22 @@ class MysqlPipeline:
         self.db.close()
 
     def process_item(self, item, spider):
-        sql = "insert into dang(title,author,pic,publish,comment,price) values('%s','%s','%s','%s','%s','%s')" % (
-            item['title'], item['author'], item['pic'], item['publish'], item['comment'], item['price'])
+        sql = "insert into wuhan_new(name,price,property_type,features,building_type,fit_type,years_limit,loop_line,developer,address,sale_type,open_time,compelete_time,house_area,land_area,bulid_area,plot_ratio,green_ratio,parking_num,bulid_num,house_num,property_fee,property_fac,floor_info) values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')" % (
+            item['name'], item['price'], item['property_type'], item['features'], item['building_type'],
+            item['fit_type'], item['years_limit'], item['loop_line'], item['developer'], item['address'],
+            item['sale_type'], item['open_time'], item['compelete_time'], item['house_area'], item['land_area'],
+            item['bulid_area'], item['plot_ratio'], item['green_ratio'], item['parking_num'], item['bulid_num'],
+            item['house_num'], item['property_fac'], item['property_fee'], item['floor_info'])
         print(sql)
         self.cursor.execute(sql)
         self.db.commit()
         return item
 
 
-#自定义储存图片信息pipeline
+# 自定义储存图片信息pipeline
+
+
+
 class MyImagesPipeline(ImagesPipeline):
 
     def get_media_requests(self, item, info):
@@ -76,4 +83,3 @@ class MyImagesPipeline(ImagesPipeline):
             raise DropItem("Item contains no images")
         item['pic'] = image_paths[0]
         return item
-

@@ -20,7 +20,7 @@ NEWSPIDER_MODULE = 'fangtianxia.spiders'
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-CONCURRENT_REQUESTS = 4
+# CONCURRENT_REQUESTS = 4
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
@@ -50,11 +50,11 @@ DOWNLOAD_DELAY = 3
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-# DOWNLOADER_MIDDLEWARES = {
-#     'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
-#     'fangtianxia.middlewares.RandomUserAgentMiddleware': 543,
-#     'fangtianxia.middlewares.ProxyMiddleware': 543,
-# }
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+    'fangtianxia.middlewares.RandomUserAgentMiddleware': 543,
+    'fangtianxia.middlewares.ProxyMiddleware': 543,
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -64,17 +64,17 @@ DOWNLOAD_DELAY = 3
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#    'fangtianxia.pipelines.FangtianxiaPipeline': 300,
-#     'fangtianxia.pipelines.MysqlPipeline': 301,
-#     'fangtianxia.pipelines.MyImagesPipeline': 302,
-# }
+ITEM_PIPELINES = {
+   # 'fangtianxia.pipelines.FangtianxiaPipeline': 300,
+    'fangtianxia.pipelines.MysqlPipeline': 301,
+    # 'fangtianxia.pipelines.MyImagesPipeline': 302,
+}
 
-MYSQL_HOST = '***'
-MYSQL_DATABASE = 'dangdang'
-MYSQL_USER = '***'
-MYSQL_PASS = '***!'
-# MYSQL_PORT = ***
+MYSQL_HOST = 'www.anooki.cn'
+MYSQL_DATABASE = 'fangtianxia'
+MYSQL_USER = 'Anooki'
+MYSQL_PASS = 'HeiKe74qb!'
+MYSQL_PORT = 53309
 
 IMAGES_STORE = './images'
 
@@ -98,6 +98,9 @@ IMAGES_STORE = './images'
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+#
+# LOG_FILE = "mySpider.log"
+# LOG_LEVEL = "INFO"  # DEBUG<INFO<WARNING<ERROR<CRITICAL
 
-LOG_FILE = "mySpider.log"
-LOG_LEVEL = "INFO"  # DEBUG<INFO<WARNING<ERROR<CRITICAL
+
+HTTPERROR_ALLOWED_CODES = [301]
